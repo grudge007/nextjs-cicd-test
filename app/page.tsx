@@ -15,7 +15,7 @@ export default function Home() {
     <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>🚀 Deployed via GitHub Actions! its Updated MF..</h1>
       <p>
-        API says: <strong>{ping pong}</strong>
+        API says: <strong>{pong}</strong>
       </p>
     </main>
   );
