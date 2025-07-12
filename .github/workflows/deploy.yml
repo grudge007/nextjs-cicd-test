@@ -1,0 +1,26 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy via SSH
+        run: |
+          ssh -o StrictHostKeyChecking=no your_user@your_vps_ip << 'EOF'
+            cd /var/www/nextjs-cicd-test
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart nextjs || pm2 start npm --name "nextjs" -- start
+          EOF
