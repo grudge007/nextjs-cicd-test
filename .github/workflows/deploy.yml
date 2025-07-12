@@ -25,5 +25,5 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            pm2 restart nextjs || pm2 start npm --name "nextjs" -- start
+            pm2 restart nextjs || pm2 start npx --name "nextjs" -- start
           EOF
