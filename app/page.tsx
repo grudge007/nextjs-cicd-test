@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>🚀 Deployed via GitHub Actions! its Updated MF..!! Hope it will work..Even Hope is not a strategy</h1>
+      <h1>its Updated MF..!! Hail.. GPT</h1>
       <p>
         API says: <strong>{pong}</strong>
       </p>
