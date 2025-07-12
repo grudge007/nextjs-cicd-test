@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup SSH
@@ -19,10 +19,9 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Deploy to VPS
-      - name: Deploy to VPS
         run: |
           ssh -o StrictHostKeyChecking=no root@kreep-0.iamgrudge.live << 'EOF'
-            cd /var/www/nextjs-cicd-test
+            cd /var/www/nextjs-cicd-test || exit 1
             git reset --hard
             git pull origin main
             npm install
