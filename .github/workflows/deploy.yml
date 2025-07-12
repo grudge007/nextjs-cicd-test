@@ -21,9 +21,11 @@ jobs:
       - name: Deploy to VPS
         run: |
           ssh -o StrictHostKeyChecking=no root@kreep-0.iamgrudge.live << 'EOF'
+            if [ ! -d /var/www/nextjs-cicd-test ]; then
+              git clone git@github.com:grudge007/nextjs-cicd-test.git /var/www/nextjs-cicd-test
+            fi
             cd /var/www/nextjs-cicd-test
-            git reset --hard HEAD
-            git clean -fd
+            git reset --hard
             git pull origin main
             npm install
             npm run build
