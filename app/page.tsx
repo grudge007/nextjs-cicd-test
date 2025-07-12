@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>Hello from Next.js</h1>
+      <h1>🚀 Deployed via GitHub Actions!</h1>
       <p>
         API says: <strong>{ping pong}</strong>
       </p>
