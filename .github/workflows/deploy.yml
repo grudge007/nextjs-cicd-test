@@ -20,10 +20,12 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no root@kreep-0.iamgrudge.live  << 'EOF'
+          ssh -o StrictHostKeyChecking=no root@kreep-0.iamgrudge.live << 'EOF'
             cd /var/www/nextjs-cicd-test
+            git reset --hard HEAD
+            git clean -fd
             git pull origin main
             npm install
             npm run build
-            pm2 restart nextjs || pm2 start npx --name "nextjs" -- start
+            pm2 restart nextjs || pm2 start npm --name "nextjs" -- start
           EOF
